@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import api from "../../services/api";
+import { Link } from "react-router-dom";
 
 import "./styles.css"
 
@@ -44,17 +45,17 @@ export default class Main extends Component {
             <div className="product-list">
                 {products.map(product => (
                     <article key={product._id}>
-                    <strong>{product.title}</strong>
-                    <p>{product.description}</p>
-                    <a href="">Acessar</a>
+                        <strong>{product.title}</strong>
+                        <p>{product.description}</p>
+                        <Link to={`/products/${product._id}`}>Detail</Link>
                     </article>
                 ))}
                 <div className="actions">
                     <button disabled={page === 1} onClick={this.prevPage}>
-                        Anterior
+                        Prev
                     </button>
                     <button disabled={page === productInfo.pages} onClick={this.nextPage}>
-                        Próximo
+                        Next
                     </button>
                 </div>
             </div>
